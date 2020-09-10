@@ -14,11 +14,11 @@ function App() {
       <div className="App">
         <Navbar />
       </div>
+
       <Route path='/' exact><ExercisesList /></Route>
       <Route path='/edit/:id' exact><EditExercise /></Route>
       <Route path='/create' exact><CreateExercise /></Route>
       <Route path='/user' exact><CreateUser /></Route>
-
     </Router>
   );
 }
