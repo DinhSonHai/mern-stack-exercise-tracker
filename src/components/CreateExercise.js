@@ -38,7 +38,7 @@ export default function CreateExercise() {
         console.log('Success:', values);
         axios.post('http://localhost:5000/exercises/add', values)
             .then(res => console.log(res.data));
-        // window.location = '/';
+        window.location = '/';
       };
     
     const onFinishFailed = errorInfo => {
@@ -58,7 +58,7 @@ export default function CreateExercise() {
     }
 
     const onChangeDate = (date, dateString) => {
-        setDate(date.format('YYYY-MM-DD[T00:00:00.000Z]'));
+        setDate(date);
     }
 
     return (

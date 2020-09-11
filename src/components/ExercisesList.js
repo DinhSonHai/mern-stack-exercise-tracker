@@ -3,6 +3,7 @@ import axios from 'axios';
 import antd from 'antd';
 import 'antd/dist/antd.css';
 import { Link } from 'react-router-dom';
+import moment from 'moment';
 
 import { Table, Checkbox } from 'antd';
 
@@ -33,6 +34,7 @@ export default function ExercisesList() {
         {
           title: 'Date',
           dataIndex: 'date',
+          render: date => moment(date).format('DD-MM-YYYY'),
         },
         {
           title: '#',

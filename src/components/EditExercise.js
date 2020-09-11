@@ -3,7 +3,7 @@ import axios from 'axios';
 import { Form, Input, Button, DatePicker } from 'antd';
 import { useParams } from 'react-router-dom';
 import { useForm } from 'antd/lib/form/Form';
-import format from 'moment';
+import moment from 'moment';
 
 export default function EditExercise() {
     const [username, setUsername] = useState('123');
@@ -28,7 +28,7 @@ export default function EditExercise() {
                     username: res.data.username,
                     description: res.data.description,
                     duration: res.data.duration,
-                    date: format(res.data.date),
+                    date: moment(res.data.date),
                 });
             })
     }, [])
@@ -52,7 +52,7 @@ export default function EditExercise() {
         console.log('Success:', values);
         axios.put('http://localhost:5000/exercises/edit/' + id , values)
             .then(res => console.log(res.data));
-        // window.location = '/';
+        window.location = '/';
       };
     
     const onFinishFailed = errorInfo => {

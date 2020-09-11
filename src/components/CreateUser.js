@@ -54,7 +54,7 @@ export default class CreateUser extends Component {
     render() {
         return(
             <div className="CreateExercise">
-            <h1 style={{textAlign: "center"}}>Create new exercise log</h1>
+            <h1 style={{textAlign: "center"}}>Create new user log</h1>
             <Form 
                 {...layout}
                 name="basic"
