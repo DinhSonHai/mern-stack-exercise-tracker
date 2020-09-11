@@ -2,26 +2,11 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Form, Input, Button, DatePicker } from 'antd';
 
-const layout = {
-    labelCol: {
-      span: 8,
-    },
-    wrapperCol: {
-      span: 8,
-    },
-};
-const tailLayout = {
-    wrapperCol: {
-      offset: 8,
-      span: 16,
-    },
-};
-
 export default function CreateExercise() {
     const [username, setUsername] = useState('');
     const [description, setDescription] = useState('');
     const [duration, setDuration] = useState(0);
-    const [date, setDate] = useState(new Date('YYYY-MM-DD[T00:00:00.000Z]'));
+    const [date, setDate] = useState(new Date());
     const [users, setUsers] = useState([]);
 
     useEffect(() => {
@@ -34,8 +19,22 @@ export default function CreateExercise() {
             })
     }, [])
 
+    const layout = {
+        labelCol: {
+          span: 8,
+        },
+        wrapperCol: {
+          span: 8,
+        },
+    };
+    const tailLayout = {
+        wrapperCol: {
+          offset: 8,
+          span: 16,
+        },
+    };
+
     const onFinish = values => {
-        values.Date = date;
         console.log('Success:', values);
         axios.post('http://localhost:5000/exercises/add', values)
             .then(res => console.log(res.data));
@@ -68,9 +67,6 @@ export default function CreateExercise() {
             <Form 
                 {...layout}
                 name="basic"
-                initialValues={{
-                    remember: true,
-                }}
                 onFinish={onFinish}
                 onFinishFailed={onFinishFailed}
                 >

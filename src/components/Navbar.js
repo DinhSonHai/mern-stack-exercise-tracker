@@ -28,6 +28,9 @@ export default class Navbar extends Component {
                     <Menu.Item key="createUser">
                         <Link to='/user'>Create User</Link>
                     </Menu.Item>
+                    <Menu.Item key="test">
+                        <Link to='/edit/:id'>Test</Link>
+                    </Menu.Item>
                 </Menu>
             </div>
         )

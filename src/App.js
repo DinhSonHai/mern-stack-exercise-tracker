@@ -15,9 +15,9 @@ function App() {
       </div>
 
       <Route path='/' exact><ExercisesList /></Route>
-      <Route path='/edit/:id' exact><EditExercise /></Route>
-      <Route path='/create' exact><CreateExercise /></Route>
-      <Route path='/user' exact><CreateUser /></Route>
+      <Route path='/edit/:id'><EditExercise /></Route>
+      <Route path='/create'><CreateExercise /></Route>
+      <Route path='/user'><CreateUser /></Route>
     </Router>
   );
 }
