@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import { Form, Input, Button, Checkbox, DatePicker } from 'antd';
 
 const layout = {
@@ -8,13 +9,13 @@ const layout = {
     wrapperCol: {
       span: 8,
     },
-  };
-  const tailLayout = {
+};
+const tailLayout = {
     wrapperCol: {
       offset: 8,
       span: 16,
     },
-  };
+};
 
 export default function CreateExercise() {
     const [username, setUsername] = useState('');
@@ -24,22 +25,20 @@ export default function CreateExercise() {
     const [users, setUsers] = useState([]);
 
     useEffect(() => {
-        setUsers([...users, 'test user'])
-        console.log(users)
+        // setUsers([...users, 'test user'])
+        // console.log(users)
+        axios.get('http://localhost:5000/users')
+            .then (res => {
+                setUsers(res.data.map(user => user.username));
+                setUsername(res.data[0].username);
+            })
     }, [])
 
     const onFinish = values => {
-        console.log('Success:', values);
         values.Date = date;
         console.log('Success:', values);
-        // const exercise = {
-        //     username: username,
-        //     description: description,
-        //     duration: duration,
-        //     date: date,
-        // };
-
-        // console.log(exercise);
+        axios.post('http://localhost:5000/exercises/add', values)
+            .then(res => console.log(res.data));
         // window.location = '/';
       };
     
@@ -57,7 +56,6 @@ export default function CreateExercise() {
 
     const onInputDuration = e => {
         setDuration(Number(e.target.value));
-        console.log(date)
     }
 
     const onChangeDate = (date, dateString) => {
@@ -91,7 +89,7 @@ export default function CreateExercise() {
 
                 <Form.Item
                     label="Description"
-                    name="Description"
+                    name="description"
                     rules={[
                     {
                         required: true,
@@ -104,7 +102,7 @@ export default function CreateExercise() {
 
                 <Form.Item
                     label="Duration"
-                    name="Duration"
+                    name="duration"
                     rules={[
                     {
                         required: true,
@@ -117,7 +115,7 @@ export default function CreateExercise() {
 
                 <Form.Item
                     label="Date"
-                    name="Date"
+                    name="date"
                     rules={[
                     {
                         required: true,
@@ -126,10 +124,6 @@ export default function CreateExercise() {
                     ]}
                 >
                     <DatePicker onChange={onChangeDate}/>
-                </Form.Item>
-
-                <Form.Item {...tailLayout} name="remember" valuePropName="checked">
-                    <Checkbox>Remember me</Checkbox>
                 </Form.Item>
 
                 <Form.Item {...tailLayout}>

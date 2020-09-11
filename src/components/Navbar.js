@@ -19,13 +19,13 @@ export default class Navbar extends Component {
         return (
             <div className="Navbar">
                 <Menu onClick={this.handleClick} selectedKeys={[current]} mode="horizontal">
-                    <Menu.Item>
+                    <Menu.Item key="exercises">
                         <Link to='/'>Exercise Tracker</Link>
                     </Menu.Item>
-                    <Menu.Item>
+                    <Menu.Item key="createExercise">
                         <Link to='/create'>Create Exercise Log</Link>
                     </Menu.Item>
-                    <Menu.Item>
+                    <Menu.Item key="createUser">
                         <Link to='/user'>Create User</Link>
                     </Menu.Item>
                 </Menu>
