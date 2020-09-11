@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { Form, Input, Button, Checkbox, DatePicker } from 'antd';
+import { Form, Input, Button, DatePicker } from 'antd';
 
 const layout = {
     labelCol: {
